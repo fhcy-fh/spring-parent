@@ -1,0 +1,22 @@
+server:
+  port: 9091
+  tomcat:
+    uri-encoding: utf-8
+  servlet:
+    session:
+      cookie:
+        secure: true
+        http-only: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+feign:
+  hystrix:
+    enabled: true
